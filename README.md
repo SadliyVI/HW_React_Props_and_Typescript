@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Домашнее задание к занятию React: Props + TypeScript (Etsy Listing)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## HW_React_Props_and_Typescript — (Vite + React + TypeScript)
 
-Currently, two official plugins are available:
+[![Deploy to GitHub Pages](https://github.com/SadliyVI/HW_React_Props_and_Typescript/actions/workflows/main.yml/badge.svg)](https://github.com/SadliyVI/HW_React_Props_and_Typescript/actions/workflows/main.yml)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Проект на **Vite + React**, демонстрирующий вывод списка предложений каталога **Etsy.com**.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Онлайн-демонстрация
 
-## Expanding the ESLint configuration
+- GitHub Pages: <https://sadliyvi.github.io/HW_React_Props_and_Typescript/>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Требования по заданию (что реализовано)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Используется **React + Vite**
+- Весь код на **TypeScript**
+- Все `props` **типизированы**
+- Тип `any` **не используется**
+- Данные берутся из `etsy.json` (импорт JSON в TS)
+- Отрисовка сетки карточек в стиле из `style.css`
+- Для карточки используются поля:
+  - `listing_id`
+  - `url`
+  - `MainImage.url_570xN`
+  - `title`
+  - `currency_code`
+  - `price`
+  - `quantity`
+- Ограничение длины заголовка:
+  - если `title` > 50 символов → показываются первые 50 + `…`
+- Формат цены:
+  - `USD` → `$50.00`
+  - `EUR` → `€50.00`
+  - `GBP` → `£50.00`
+  - другие валюты → `CAD 50.00`
+- Подсветка остатка по `quantity`:
+  - `<= 10` → `stock-low`
+  - `<= 20` → `stock-medium`
+  - `> 20` → `stock-high`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Стек
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React 19
+- TypeScript
+- Vite
+- GitHub Pages (деплой через GitHub Actions)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
