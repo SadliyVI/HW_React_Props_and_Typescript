@@ -30,10 +30,18 @@ export function Listing({ items = [] }: ListingProps) {
                     >
                         {item.is_digital ? <span className="digital-badge">Digital</span> : null}
 
+                        {/* <img
+                            src={item.MainImage!.url_570xN}
+                            alt={item.title}
+                            className="product-image"
+                        /> */}
+
                         <img
                             src={item.MainImage!.url_570xN}
                             alt={item.title}
                             className="product-image"
+                            referrerPolicy="no-referrer"
+                            crossOrigin="anonymous"
                         />
 
                         <div className="product-info">
